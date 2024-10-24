@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UnitController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BorrowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +44,21 @@ Route::middleware('auth')->group(function () {
         Route::get('/categories/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
         Route::put('/categories/update/{id}', [CategoryController::class, 'update'])->name('category.update');
         Route::get('/categories/delete/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+        //unit
+        Route::get('/units', [UnitController::class, 'index'])->name('unit.index');
+        Route::get('/units/add', [UnitController::class, 'create'])->name('unit.create');
+        Route::post('/units/store', [UnitController::class, 'store'])->name('unit.store');
+        Route::get('/units/edit/{id}', [UnitController::class, 'edit'])->name('unit.edit');
+        Route::put('/units/update/{id}', [UnitController::class, 'update'])->name('unit.update');
+        Route::get('/units/delete/{id}', [UnitController::class, 'destroy'])->name('unit.destroy');
+        //borrow
+        Route::get('/borrows/edit/{id}', [BorrowController::class, 'edit'])->name('borrow.edit');
+        Route::put('/borrows/update/{id}', [BorrowController::class, 'update'])->name('borrow.update');
+        Route::get('/borrows/delete/{id}', [BorrowController::class, 'destroy'])->name('borrow.destroy');
     });
+    // Route::get('/borrows/', [BorrowController::class, 'index'])->name('borrow.index');
+    Route::get('/borrows/add/{id}', [BorrowController::class, 'create'])->name('borrow.create');
+    Route::post('/borrows/store', [BorrowController::class, 'store'])->name('borrow.store');
 });
 
 require __DIR__.'/auth.php';

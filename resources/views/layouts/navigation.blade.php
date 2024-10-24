@@ -19,7 +19,7 @@
 
                 <!-- Menu 2 -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('')">
+                    <x-nav-link :href="route('unit.index')" :active="request()->routeIs('unit.index')">
                         {{ __('Borrow') }}
                     </x-nav-link>
                 </div>
@@ -32,7 +32,7 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                <div>Admin</div>
+                                <div>Menu</div>
 
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -49,13 +49,13 @@
                         </x-dropdown-link>
 
                         {{-- add item --}}
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Add Item') }}
+                        <x-dropdown-link :href="route('unit.index')">
+                            {{ __('Unit') }}
                         </x-dropdown-link>
 
                         {{-- add user --}}
                         <x-dropdown-link :href="route('users.index')">
-                            {{ __('Add User') }}
+                            {{ __('User') }}
                         </x-dropdown-link>
                     </x-slot>
                 </x-dropdown>

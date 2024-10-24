@@ -9,19 +9,26 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{-- <div>
+                    <div d-flex justify-start mb-2>
                         <form action="" class="form-inline" method="GET">
-
-                            <input type="text" name="keyword" class="form-control float-right" placeholder="Search" value="">
-
+                            {{-- <input type="text" name="keyword" class="form-control float-right" placeholder="Search" value="{{ old('keyword', $keyword) }}"> --}}
+                            <div class="form-group d-flex justify-end mr-2">
+                                <input type="keyword" value="{{ old('keyword', $keyword) }}" class="form-control" id="keyword" aria-describedby="keyword" placeholder="Search User" name='keyword'>
+                              </div>
                             <div class="input-group-append">
-                                <button id="searchUser" type="submit" class="btn btn-default">
-                                    <i class="fas fa-search"></i>
-                                </button>
+                                <x-primary-button class="d-flex justify-end mr-2" id="searchUnit" type="submit" class="btn btn-default">
+                                  search
+                                </x-primary-button>
                             </div>
-                            {{-- <input type="reset" name= "Reset" value="Reset" href="/pengaturanadmin"> --}}
-                        {{-- </form>
-                    </div> --}}
+                        </form>
+                        <div class="input-group-append">
+                                <a href="{{ route('users.index') }}" class="btn btn-default">
+                                    <x-secondary-button id="cancelSearch" type="submit" class="btn btn-default">
+                                        Cancel
+                                      </x-secondary-button>
+                                </a>
+                            </div>
+                    </div>
                     <div class="d-flex justify-end mb-2">
                         <a class="btn btn-success" href="{{ route('user.create') }}">Add User</a>
                     </div>

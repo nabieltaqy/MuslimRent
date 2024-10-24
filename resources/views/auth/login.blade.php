@@ -22,6 +22,7 @@
                             required autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                <p class="small d-flex justify-end">Don't have an account? <a href="{{ route('register') }}"> Register</a></p>
         </div>
 
         <!-- Remember Me -->

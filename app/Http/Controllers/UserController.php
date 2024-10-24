@@ -19,7 +19,7 @@ class UserController extends Controller
         ->latest()
         ->paginate(10);
 
-        return view('user.index', compact('users'));
+        return view('user.index', compact(['users', 'keyword']));
     }
 
     //user create
