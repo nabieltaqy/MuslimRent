@@ -14,7 +14,7 @@ class CategoryController extends Controller
         $keyword = $request->keyword;
 
         $categories = Category::where('category_name', 'like', '%' . $keyword . '%')
-        ->latest()
+        ->orderBy('created_at', 'desc')
         ->paginate(10);
 
         return view('category.index', compact(['categories', 'keyword']));

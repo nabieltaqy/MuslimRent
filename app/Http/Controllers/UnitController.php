@@ -18,6 +18,7 @@ class UnitController extends Controller
             $query->where('category_name', 'like', '%' . $keyword . '%'); })
         ->orWhere('kode_unit', 'like', '%' . $keyword . '%')
         ->orWhere('nama_unit', 'like', '%' . $keyword .'%')
+        ->orderBy('created_at', 'desc')
         // ->orWhereHas('categories', function($query) use ($keyword) {
         //     $query->where('category_name', 'like', '%' . $keyword . '%'); 
         // })

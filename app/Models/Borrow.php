@@ -15,7 +15,10 @@ class Borrow extends Model
         'qty',
         'borrow_date',
         'return_date',
-        'status'
+        'status',
+        'actual_return_date',
+        'penalty',
+        'updated_by',
     ];
 
     public function unit()
@@ -23,8 +26,13 @@ class Borrow extends Model
         return $this->belongsTo(Unit::class);
     }
 
-    public function user()
+    public function borrower()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function editor()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
     }
 }

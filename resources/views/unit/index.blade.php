@@ -87,7 +87,7 @@
                                             <div class="btn-group btn-group-sm">
                                                 @if (Auth::user()->role == 'Admin')
                                                 <a title="Edit Unit" href="{{ route('unit.edit', $unit->id) }}" class="btn btn-info"><i class="fa fa-pencil-alt">Edit</i></a>
-                                                <a title="Delete Unit"  href="{{ route('unit.destroy', $unit->id ) }}" class="btn btn-danger"><i class="fa fa-trash">Delete</i></a>
+                                                <a title="Delete Unit" onclick="return confirm('Are you sure you want to delete this?');" href="{{ route('unit.destroy', $unit->id ) }}" class="btn btn-danger"><i class="fa fa-trash">Delete</i></a>
                                                 @endif
                                                 <a title="Delete Unit"  href="{{ route('borrow.create', $unit->id ) }}" class="btn btn-primary"><i class="fa fa-trash">Borrow</i></a>
                                             </div>

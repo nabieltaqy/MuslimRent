@@ -18,7 +18,10 @@ return new class extends Migration
             $table->integer('qty');
             $table->date('borrow_date');
             $table->date('return_date');
-            $table->string('status')->enum(['Waiting', 'Approved', 'Rejected', 'Returned']);
+            $table->enum('status', ['Waiting', 'Approved', 'Rejected', 'On Going', 'Returned'])->default('Waiting');
+            $table->integer('penalty')->default(0);
+            $table->date('actual_return_date')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

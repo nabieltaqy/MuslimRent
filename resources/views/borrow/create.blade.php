@@ -23,11 +23,13 @@
                             <div class="form-row">
                                 <div class="col">
                                     <label for="borrow_date" class="mt-2">Borrow Date</label>
-                                    <input type="date" class="form-control" id="borrow_date" aria-describedby="borrow_date" placeholder="Borrow Date" name='borrow_date' required>
+                                    <input type="date" min="{{ date('Y-m-d') }}" class="form-control" id="borrow_date" aria-describedby="borrow_date" placeholder="Borrow Date" name='borrow_date' required>
+                            <small class="form-text text-muted">max days : 5</small>
+                                
                                 </div>
                                 <div class="col ml-2">
                                     <label for="return_date" class="mt-2">Return Date</label>
-                                    <input type="date" class="form-control" id="borrow_date" aria-describedby="return_date" placeholder="Return Date" name='return_date' required>
+                                    <input type="date" min="{{ date('Y-m-d') }}" class="form-control" id="borrow_date" aria-describedby="return_date" placeholder="Return Date" name='return_date' required>
                                 </div>
                             </div>
 
@@ -62,4 +64,14 @@
             </div>
         </div>
     </div>
+    <script>
+        @if(session('error'))
+        Swal.fire({
+            title: 'Gagal!',
+            text: '{{ session('error') }}',
+            icon: 'fail',
+            confirmButtonText: 'OK'
+        });
+        @endif
+    </script>
 </x-app-layout>

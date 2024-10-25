@@ -24,6 +24,13 @@
                     </x-nav-link>
                 </div>
 
+                <!-- Menu 3 -->
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('borrow.index')" :active="request()->routeIs('borrow.index')">
+                        {{ __('History') }}
+                    </x-nav-link>
+                </div>
+
                 {{-- dropdown admin menu --}}
                 @if (Auth::user()->role=='Admin')
                     
@@ -56,6 +63,9 @@
                         {{-- add user --}}
                         <x-dropdown-link :href="route('users.index')">
                             {{ __('User') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('penalty.index')">
+                            {{ __('Penalty') }}
                         </x-dropdown-link>
                     </x-slot>
                 </x-dropdown>

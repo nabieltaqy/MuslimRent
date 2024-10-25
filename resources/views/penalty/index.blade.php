@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Category') }}
+            {{ __('Penalty') }}
         </h2>
     </x-slot>
 
@@ -13,16 +13,16 @@
                         <form action="" class="form-inline" method="GET">
                             {{-- <input type="text" name="keyword" class="form-control float-right" placeholder="Search" value="{{ old('keyword', $keyword) }}"> --}}
                             <div class="form-group d-flex justify-end mr-2">
-                                <input type="keyword" value="{{ old('keyword', $keyword) }}" class="form-control" id="keyword" aria-describedby="keyword" placeholder="Search Category" name='keyword'>
+                                <input type="keyword" value="{{ old('keyword', $keyword) }}" class="form-control" id="keyword" aria-describedby="keyword" placeholder="Search Penalty" name='keyword'>
                               </div>
                             <div class="input-group-append">
-                                <x-primary-button class="d-flex justify-end mr-2" id="searchUnit" type="submit" class="btn btn-default">
+                                <x-primary-button class="d-flex justify-end mr-2" id="searchPenalty" type="submit" class="btn btn-default">
                                   search
                                 </x-primary-button>
                             </div>
                         </form>
                         <div class="input-group-append">
-                                <a href="{{ route('category.index') }}" class="btn btn-default">
+                                <a href="{{ route('penalty.index') }}" class="btn btn-default">
                                     <x-secondary-button id="cancelSearch" type="submit" class="btn btn-default">
                                         Cancel
                                       </x-secondary-button>
@@ -31,19 +31,19 @@
                             
                     </div>
                     <div class="d-flex justify-end mb-2">
-                        <a class="btn btn-success" href="{{ route('category.create') }}">Add Category</a>
+                        <a class="btn btn-success" href="{{ route('penalty.create') }}">Add Penalty</a>
                     </div>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-                                <th scope="col">Category Name</th>
-                                <th scope="col">Description</th>
+                                <th scope="col">Penalty Name</th>
+                                <th scope="col">Amount</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($categories->isEmpty())
+                            @if ($penalties->isEmpty())
                                 <td>
                                     <h2>No Data</h2>
                                 </td>
@@ -57,17 +57,14 @@
                                     <h2>No Data</h2>
                                 </td>
                             @else
-                            @foreach ($categories as $category)
+                            @foreach ($penalties as $penalty)
                                 <tr>
-                                    <th scope="row">{{ $category->id }}</th>
-                                    <td>{{ $category->category_name }}</td>
-                                    <td>{{ $category->description }}</td>
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $penalty->penalty_name }}</td>
+                                    <td>{{ $penalty->amount }}</td>
                                     <td>
-                                            <div class="btn-group btn-group-sm">
-                                                <a title="Edit User" href="{{ route('category.edit', $category->id) }}" class="btn btn-info"><i class="fa fa-pencil-alt">Edit</i></a>
-                                                <a title="Delete User" onclick="return confirm('Are you sure you want to delete this?');" href="{{ route('category.destroy', $category->id ) }}" class="btn btn-danger"><i class="fa fa-trash">Delete</i></a>
-                                            </div>
-                                        </td>
+                                        <a title="Edit penalty" href="{{ route('penalty.edit', $penalty->id) }}" class="btn btn-info"><i class="fa fa-pencil-alt">Edit</i></a>
+                                        <a title="Delete penalty" onclick="return confirm('Are you sure you want to delete this record?');" href="{{ route('penalty.destroy', $penalty->id ) }}" class="btn btn-danger"><i class="fa fa-trash">Delete</i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -75,7 +72,7 @@
                         </tbody>
                     </table>
                     <div class="float-right">
-                        {{ $categories -> links() }}
+                        {{ $penalties -> links() }}
                     </div>
                 </div>
             </div>
