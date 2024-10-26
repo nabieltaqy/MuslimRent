@@ -75,7 +75,7 @@ class BorrowController extends Controller
 
         $user = $request->user_id;
         $userBorrow = Borrow::where('user_id', $user)
-            ->orWhere('status', 'Waiting')
+            ->where('status', ['Waiting', 'Approved', 'On Going'])
             ->orWhere('status', 'Approved')
             ->orWhere('status', 'On Going')
             ->count();

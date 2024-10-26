@@ -65,7 +65,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($borrows->isEmpty())
+                            @if ($borrows->count() == 0)
                                 <td>
                                     <h2>No Data</h2>
                                 </td>

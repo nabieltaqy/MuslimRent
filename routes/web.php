@@ -59,7 +59,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/penalties', [PenaltyController::class, 'index'])->name('penalty.index');
         Route::get('/penalties/add', [PenaltyController::class, 'create'])->name('penalty.create');
         Route::post('/penalties/store', [PenaltyController::class, 'store'])->name('penalty.store');
-        Route::get('/penalties/edit/{id}', [PenaltyController::class, 'eidt'])->name('penalty.edit');
+        Route::get('/penalties/edit/{id}', [PenaltyController::class, 'edit'])->name('penalty.edit');
         Route::put('/penalties/update/{id}', [PenaltyController::class, 'update'])->name('penalty.update');
         Route::get('/penalties/delete/{id}', [PenaltyController::class, 'destroy'])->name('penalty.destroy');
         //print to pdf

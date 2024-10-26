@@ -165,9 +165,11 @@
                             @endif
                         </tbody>
                     </table>
+                    @if (Auth::user()->role == 'Admin')
                     <div class="d-flex float left mt-2">
                         <a class="btn btn-secondary" href="{{ route('borrow.print') }}">Print to PDF</a>
                     </div>
+                    @endif
                     <div class="float-right">
                         {{ $borrows -> links() }}
                     </div>

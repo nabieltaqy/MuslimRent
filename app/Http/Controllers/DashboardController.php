@@ -12,25 +12,26 @@ class DashboardController extends Controller
 {
     //
     public function index(){
-        if(Auth::user()->role == 'Admin'){
-            $borrows = Borrow::paginate(5);
-        }else{
-            $borrows = Borrow::where('user_id', Auth::user()->id);
+        
+        $borrows = Borrow::paginate(5);
+        if(Auth::user()->role == 'Anggota'){
+            $borrows = Borrow::where('user_id', Auth::user()->id)->paginate(5);
         }
+        // @dd($borrows);
         $units = Unit::all();
         $users = User::all();
         if(Auth::user()->role == 'Admin'){
             $totalPenalty = Borrow::where('status', 'Returned')->sum('penalty');
         }else{
             $totalPenalty = Borrow::where('status', 'Returned')
-            ->orWhere('user_id', Auth::user()->id)
+            ->where('user_id', Auth::user()->id)
             ->sum('penalty');
         }
         if(Auth::user()->role == 'Admin'){
             $borrowsWaiting = Borrow::where('status', 'Waiting')->count();
         }else{
             $borrowsWaiting = Borrow::where('status', 'Waiting')
-            ->orWhere('user_id', Auth::user()->id)
+            ->where('user_id', Auth::user()->id)
             ->count();
         }
         $borrowsUser = Borrow::where('user_id', Auth::user()->id)
