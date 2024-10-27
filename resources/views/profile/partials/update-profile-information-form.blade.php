@@ -22,6 +22,7 @@
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
+        
 
         <div>
             <x-input-label for="email" :value="__('Email')" />
@@ -46,6 +47,27 @@
                 </div>
             @endif
         </div>
+        <div>
+            <x-input-label for="phone" :value="__('Phone')" />
+            <x-text-input id="phone" name="phone" type="number" class="mt-1 block w-full" :value="old('phone', $user->phone)" required autofocus autocomplete="phone" />
+            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
+        </div>
+        <div>
+            <label for="province">Province</label>
+            <select class="form-control" id="province" name="province" onchange="updateCityList()" required>
+                @foreach ($provinces as $province)
+                <option value="{{ $province->id }}" {{ $user->city->province->name == $province->name ? 'selected' : '' }}>{{ $province->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div>
+            <label for="city">City</label>
+            <select class="form-control" id="city" name="city" required>
+                @foreach ($cities as $city)
+                <option value="{{ $city->id }}" {{ $user->city->name == $city->name ? 'selected' : '' }}>{{ $city->name }}</option>
+                @endforeach
+            </select>
+        </div>
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
@@ -61,4 +83,21 @@
             @endif
         </div>
     </form>
+    <script>
+        function updateCityList() {
+            var provinceId = document.getElementById("province").value;
+            var cityList = document.getElementById("city");
+            cityList.innerHTML = '<option value="" disabled selected>Pilih Sub Kategori</option>';
+
+            @foreach ($cities as $city)
+                if ({{ $city->province_id }} == provinceId) {
+                    var option = document.createElement("option");
+                    option.value = "{{ $city->id }}";
+                    option.text = "{{ $city->name }}";
+                    cityList.add(option);
+                }
+            @endforeach
+
+        }
+    </script>
 </section>

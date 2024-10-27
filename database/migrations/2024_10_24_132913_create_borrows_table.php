@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('updated_by')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
+            $table->foreign('unit_id')->references('id')->on('units')->onDelete('restrict'); //harusnya restrict
         });
     }
 

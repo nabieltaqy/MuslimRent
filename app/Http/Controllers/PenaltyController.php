@@ -50,11 +50,7 @@ class PenaltyController extends Controller
             'amount' => 'required|integer|min:1',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-            ->withErrors($validator)
-            ->withInput(); // mengembalikan input
-        }
+        A
 
         $penalty = Penalty::findOrFail($id);
 

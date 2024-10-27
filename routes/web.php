@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BorrowController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\PenaltyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
@@ -75,6 +76,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/borrows/delete/{id}', [BorrowController::class, 'destroy'])->name('borrow.destroy');
     Route::get('/borrows/return/{id}', [BorrowController::class, 'return'])->name('borrow.return');
     Route::put('/borrows/saveReturn/{id}', [BorrowController::class, 'saveReturn'])->name('borrow.saveReturn');
+
+    //review
+    Route::post('/review/{type}/{id}', [ReviewController::class, 'store']);
 });
 
 require __DIR__.'/auth.php';

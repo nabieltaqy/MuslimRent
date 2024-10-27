@@ -120,6 +120,14 @@
                     </table>
                 </div>
             </div>
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mt-2 mb-2">
+                <div class="p-6 text-gray-900 text-center">
+                    <h1 class="bold mb-4"><b>Video Tutorial<b></h1>
+                    <div class="d-flex justify-center">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/LwnLurexn1Y?si=nfuFwkd6a7gTu2pO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </x-app-layout>

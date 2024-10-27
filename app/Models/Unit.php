@@ -21,4 +21,9 @@ class Unit extends Model
          return $this->belongsToMany(Category::class, 'category_unit')
                      ->withTimestamps();
      }
+
+     public function reviews()
+    {
+        return $this->morphMany(Review::class, 'reviewable');
+    }
 }

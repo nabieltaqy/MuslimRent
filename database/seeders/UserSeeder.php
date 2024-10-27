@@ -21,6 +21,8 @@ class UserSeeder extends Seeder
                 'email' => 'admin@example.com',
                 'password' => Hash::make('12345678'), // Password yang di-hash
                 'Role' => 'Admin',
+                'city_id' => 1,
+                'phone' => '08123456789',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -29,6 +31,8 @@ class UserSeeder extends Seeder
                 'email' => 'user@example.com',
                 'password' => Hash::make('12345678'), // Password yang di-hash
                 'Role' => 'Anggota',
+                'city_id' => 1,
+                'phone' => '0834543219',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

@@ -22,6 +22,8 @@ class User extends Authenticatable
         'email',
         'role',
         'password',
+        'phone',
+        'city_id'
     ];
 
     /**
@@ -47,5 +49,15 @@ class User extends Authenticatable
     public function borrow()
     {
         return $this->hasMany(Borrow::class, 'user_id');
+    }
+    
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id');
+    }
+
+    public function reviews()
+    {
+        return $this->morphMany(Review::class, 'reviewable');
     }
 }
