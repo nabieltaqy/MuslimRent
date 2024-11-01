@@ -91,6 +91,11 @@
                                                 @endif
                                                 <a title="Delete Unit"  href="{{ route('borrow.create', $unit->id ) }}" class="btn btn-primary"><i class="fa fa-trash">Borrow</i></a>
                                             </div>
+                                            <div class="btn-group btn-group-sm">
+                                                <a title="Review" href="{{ route('reviews.create', ['type' => 'unit', 'id' => $unit->id]) }}" class="btn btn-warning">
+                                                    <x-primary-button type="submit">Review</x-primary-button>
+                                                </a>
+                                            </div>
                                         </td>
                                     </td>
                                 </tr>

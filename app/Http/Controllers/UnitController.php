@@ -13,7 +13,7 @@ class UnitController extends Controller
     {
         $keyword = $request->keyword;
 
-        $units = Unit::with('categories') // Menggunakan relasi dengan kategori
+        $units = Unit::with(['categories', 'reviews']) // Menggunakan relasi dengan kategori
         ->orWhereHas('categories', function($query) use ($keyword) {
             $query->where('category_name', 'like', '%' . $keyword . '%'); })
         ->orWhere('kode_unit', 'like', '%' . $keyword . '%')
@@ -107,5 +107,24 @@ class UnitController extends Controller
     {
         Unit::destroy($id);
         return redirect()->route('unit.index')->with('success', 'Unit berhasil dihapus');
+    }
+
+    public function storeReview(Request $request, $unitId)
+    {
+        $request->validate([
+            'content' => 'required|string',
+            'rating' => 'required|integer|min:1|max:5',
+        ]);
+
+        // Cari unit berdasarkan ID
+        $unit = Unit::findOrFail($unitId);
+
+        // Tambahkan review menggunakan relasi polimorfik
+        $unit->reviews()->create([
+            'content' => $request->input('content'),
+            'rating' => $request->input('rating'),
+        ]);
+
+        return redirect()->route('units.show', $unitId)->with('success', 'Review added successfully.');
     }
 }

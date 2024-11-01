@@ -23,7 +23,7 @@ class Unit extends Model
      }
 
      public function reviews()
-    {
-        return $this->morphMany(Review::class, 'reviewable');
-    }
+     {
+         return $this->morphMany(Review::class, 'reviewable');
+     }
 }

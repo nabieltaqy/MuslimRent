@@ -9,6 +9,22 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+
+                    {{-- Menampilkan reviews unit --}}
+<h2>Reviews:</h2>
+@if($unit->reviews->isEmpty())
+    <p>Belum ada review untuk unit ini.</p>
+@else
+    @foreach($unit->reviews as $review)
+        <div>
+            <p><strong>Rating:</strong> {{ $review->rating }} / 5</p>
+            <p>{{ $review->content }}</p>
+            <p><em>Ditulis pada: {{ $review->created_at->format('d M Y') }}</em></p>
+            <hr>
+        </div>
+    @endforeach
+@endif
+
                     <form action="{{ route('borrow.store') }}" method="post">
                         @csrf
                           <div class="form-group mt-2">

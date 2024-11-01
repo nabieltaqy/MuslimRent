@@ -76,6 +76,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/borrows/delete/{id}', [BorrowController::class, 'destroy'])->name('borrow.destroy');
     Route::get('/borrows/return/{id}', [BorrowController::class, 'return'])->name('borrow.return');
     Route::put('/borrows/saveReturn/{id}', [BorrowController::class, 'saveReturn'])->name('borrow.saveReturn');
+    Route::post('/reviews/{type}/{id}', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::get('/reviews/{type}/{id}', [ReviewController::class, 'create'])->name('reviews.create');
+
 
     //review
     Route::post('/review/{type}/{id}', [ReviewController::class, 'store']);

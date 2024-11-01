@@ -44,7 +44,7 @@ class BorrowController extends Controller
     public function create($id)
     {
         $user = Auth::user();
-        $unit = Unit::find($id);
+        $unit = Unit::with('reviews')->findOrFail($id);
         return view('borrow.create', compact(['user', 'unit']));
     }
 

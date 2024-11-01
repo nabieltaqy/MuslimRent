@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
+    public function create($type, $id){
+        $unit =Unit::with('reviews')->findOrFail($id);
+        return view('review.create', compact(['unit', 'type', 'id']));
+    }
     public function store(Request $request, $type, $id)
     {
         $request->validate([
@@ -18,7 +22,7 @@ class ReviewController extends Controller
         // Tentukan model berdasarkan tipe
         if ($type === 'user') {
             $reviewable = User::findOrFail($id);
-        } elseif ($type === 'alatsalat') {
+        } elseif ($type === 'unit') {
             $reviewable = Unit::findOrFail($id);
         } else {
             return response()->json(['message' => 'Model not found'], 404);
@@ -28,6 +32,7 @@ class ReviewController extends Controller
         $reviewable->reviews()->create([
             'content' => $request->input('content'),
             'rating' => $request->input('rating'),
+            
         ]);
 
         return response()->json(['message' => 'Review added successfully']);

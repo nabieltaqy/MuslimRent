@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->text('content'); // Isi dari review
-            $table->unsignedInteger('rating'); // Rating dari review
-            $table->unsignedBigInteger('reviewable_id'); // ID model yang direview
-            $table->string('reviewable_type'); // Nama model yang direview
-            $table->timestamps();
+        $table->text('content');
+        $table->integer('rating');
+        $table->morphs('reviewable'); // Kolom untuk mendukung polimorfisme
+        $table->timestamps();
         });
     }
 
